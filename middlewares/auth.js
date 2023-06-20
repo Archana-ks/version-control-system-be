@@ -4,7 +4,7 @@ exports.isAuth = (req, res, next) => {
   const { cookies } = req;
 
   if (cookies.accessToken) {
-    let decryptedData = jwt.verify(cookies.accessToken, process.env.JWT_SECRET);
+    let decryptedData = jwt.verify(cookies.accessToken, JWT_SECRET);
     req.userId = decryptedData._id;
     
     if (!req.userId) {
