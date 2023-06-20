@@ -41,7 +41,7 @@ const signin = async (req, res) => {
       const isValidUser = await bcrypt.compare(password, existingUser.hashedPassword);
 
       if (isValidUser) {
-        const token = await jwt.sign({ _id: existingUser._id }, JWT_SECRET);
+        const token = await jwt.sign({ _id: existingUser._id }, process.env.JWT_SECRET);
         res.cookie("accessToken", token, { httpOnly: true, sameSite: "none", secure: true, expire: new Date() + 86400000 });
 
         existingUser = existingUser.toObject();
