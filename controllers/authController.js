@@ -96,7 +96,7 @@ const forgotPassword = async (req, res) => {
 
     await tokenPayload.save();
 
-    const link = `${process.env.CLIENT_URL}/reset-password?token=${newToken}&id=${user._id}`;
+    const link = `https://version-control-system-fe.netlify.app/reset-password?token=${newToken}&id=${user._id}`;
 
     await sendEmail(user.email, "Version Control System Account Reset Password", {message: "Please click the link to verify your identity and set a new password for your account",link: link});
 
